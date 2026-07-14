@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter Tool</title>
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .converter-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        h2 { color: #2d3436; margin-bottom: 25px; }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            display: block; font-weight: 600; margin-bottom: 8px; color: #636e72;
+        }
+        input, select {
+            width: 100%; padding: 12px;
+            border: 2px solid #dfe6e9; border-radius: 6px;
+            font-size: 16px; outline: none; transition: border 0.3s;
+        }
+        input:focus, select:focus { border-color: #6c5ce7; }
+        button {
+            width: 100%; padding: 14px;
+            background-color: #6c5ce7; color: white;
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: bold; cursor: pointer;
+            transition: background 0.3s; margin-top: 10px;
+        }
+        button:hover { background-color: #5b4cc4; }
+        .error-msg {
+            color: #d63031; font-size: 14px; margin-top: 5px; display: none; text-align: left;
+        }
+        .result-display {
+            margin-top: 25px; padding: 15px;
+            background-color: #f1f2f6; border-radius: 6px;
+            text-align: left; display: none;
+        }
+        .result-item {
+            font-size: 16px; margin-bottom: 8px; color: #2d3436;
+        }
+        .result-item span { font-weight: bold; color: #6c5ce7; }
+    </style>
+</head>
+<body>
+
+    <div class="converter-box">
+        <h2>Temperature Converter</h2>
+        
+        <div class="input-group">
+            <label for="tempInput">Enter Value:</label>
+            <input type="text" id="tempInput" placeholder="e.g., 25 or -10">
+            <div class="error-msg" id="errorBox">Please enter a valid numeric temperature value.</div>
+        </div>
+
+        <div class="input-group">
+            <label for="unitSelect">From Unit:</label>
+            <select id="unitSelect">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        </div>
+
+        <button id="convertBtn">Convert Scales</button>
+
+        <div class="result-display" id="resultBox">
+            <div class="result-item">Celsius: <span id="resC">-</span></div>
+            <div class="result-item">Fahrenheit: <span id="resF">-</span></div>
+            <div class="result-item">Kelvin: <span id="resK">-</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const inputVal = document.getElementById('tempInput').value.trim();
+            const unit = document.getElementById('unitSelect').value;
+            const errorBox = document.getElementById('errorBox');
+            const resultBox = document.getElementById('resultBox');
+
+            // Reset States
+            errorBox.style.display = 'none';
+            resultBox.style.display = 'none';
+
+            // Check if input is empty or not a number
+            if (inputVal === '' || isNaN(inputVal)) {
+                errorBox.textContent = "Please enter a valid numeric temperature value.";
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            const temp = parseFloat(inputVal);
+            let c = 0, f = 0, k = 0;
+
+            // Conversion Logic
+            if (unit === 'C') {
+                c = temp;
+                f = (c * 9/5) + 32;
+                k = c + 273.15;
+            } else if (unit === 'F') {
+                f = temp;
+                c = (f - 32) * 5/9;
+                k = c + 273.15;
+            } else if (unit === 'K') {
+                k = temp;
+                c = k - 273.15;
+                f = (c * 9/5) + 32;
+            }
+
+            // Absolute Zero Validation (-273.15°C / 0 Kelvin)
+            if (c < -273.15) {
+                errorBox.textContent = "Error: Input value violates absolute zero (-273.15°C or 0K).";
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            // Update UI Elements (rounded to 2 decimal places)
+            document.getElementById('resC').textContent = c.toFixed(2) + " °C";
+            document.getElementById('resF').textContent = f.toFixed(2) + " °F";
+            document.getElementById('resK').textContent = k.toFixed(2) + " K";
+            
+            resultBox.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Product Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Fixed Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        header nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 10%;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #4b5563;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero .cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .hero .cta-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Main Sections Layout */
+        section {
+            padding: 80px 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #1e3a8a;
+            margin-bottom: 40px;
+        }
+
+        /* Features Section Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+
+        /* About & Testimonials */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .testimonial-box {
+            background: #fff;
+            padding: 25px;
+            border-left: 5px solid #2563eb;
+            border-radius: 4px;
+            max-width: 450px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: #fff;
+            text-align: center;
+            padding: 40px 10%;
+        }
+
+        footer .social-links a {
+            color: #9ca3af;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: #fff;
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            header { padding: 15px 5%; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SaaSify</div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#testimonials">Testimonials</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Smart Solutions for Your Business</h1>
+        <p>Streamline your workflow, boost productivity, and collaborate with your team seamlessly all in one single platform.</p>
+        <a href="#features" class="cta-btn">Get Started Free</a>
+    </div>
+
+    <section id="features">
+        <h2>Amazing Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Fast Performance</h3>
+                <p>Optimized algorithms ensure data loads efficiently without delay.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure Data</h3>
+                <p>End-to-end encryption keeping your corporate files fully safe.</p>
+            </div>
+            <div class="feature-card">
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support specialists are always ready to help you out.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background-color: #f3f4f6;">
+        <h2>About Our Vision</h2>
+        <div class="about-content">
+            <p>We build beautiful software interfaces designed to bridge the gap between complex data and clear execution. Founded with a goal to enhance digital workspaces globally.</p>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-box">
+                <p>"This platform transformed how our remote marketing team coordinates projects. Highly recommended!"</p>
+                <strong style="display:block; margin-top:10px;">- Sarah Jenkins, Product Manager</strong>
+            </div>
+            <div class="testimonial-box">
+                <p>"Incredible speeds and absolute stability. The customer care response resolved my query in minutes."</p>
+                <strong style="display:block; margin-top:10px;">- Alex Rivera, Lead Developer</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#">Twitter</a> | <a href="#">GitHub</a> | <a href="#">LinkedIn</a>
+        </div>
+        <p>&copy; 2026 SaaSify Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
